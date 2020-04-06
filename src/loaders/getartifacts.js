@@ -46,9 +46,11 @@ exports.getartifacts_loader = async ({name, stopper, logger, settings, monitor, 
     atRate({stopper, logger, name, rate: rate.list}, async () => {
       const taskId = await getTaskId();
       const res = await tcapi.call("queue.listArtifacts", cb => queue.listArtifacts(taskId, 0));
-      for (const {name} of res.artifacts) {
-        artifacts[i++] = {taskId, name, runId: 0};
-        i = i % 100;
+      if (res) {
+        for (const {name} of res.artifacts) {
+          artifacts[i++] = {taskId, name, runId: 0};
+          i = i % 100;
+        }
       }
     }),
     atRate({stopper, logger, name, rate: rate.listlatest}, async () => {
