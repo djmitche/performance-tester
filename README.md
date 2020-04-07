@@ -17,6 +17,9 @@ The configuration file contains an object `loaders` with an array of loaders to
 run.  Each object has a name, a `use` property giving the loader
 implementation, and settings for that implementation.
 
+You will also need TASKLCUSTER_ROOT_URL, TASKCLUSTER_ACCESS_TOKEN, and
+TASKCLUSTER_CLIENT_ID set correctly, preferably a root account.
+
 The included `run.yml` is an approximation of today's firefox-ci load.
 
 The output is a frequently-updated textual display giving rates of various API
